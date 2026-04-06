@@ -1,21 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, Camera, Globe, Play, MessageCircle } from "lucide-react";
 import { BRAND } from "@/lib/brand";
-
-const footerLinks = {
-  Events: [
-    { href: "/entertainment", label: "Entertainment" },
-    { href: "/empowerment", label: "Empowerment" },
-    { href: "/events", label: "All Events" },
-    { href: "/gallery", label: "Gallery" },
-  ],
-  Company: [
-    { href: "/about", label: "About Us" },
-    { href: "/contact", label: "Contact" },
-    { href: "/contact", label: "Book an Event" },
-  ],
-};
+import { useLanguage } from "@/context/LanguageContext";
 
 const socialLinks = [
   { icon: Camera, href: BRAND.socials.instagram, label: "Instagram" },
@@ -25,6 +14,22 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const { t } = useLanguage();
+
+  const footerLinks = {
+    [t.footer.events]: [
+      { href: "/entertainment", label: t.nav.entertainment },
+      { href: "/empowerment", label: t.nav.empowerment },
+      { href: "/events", label: t.events.allEvents },
+      { href: "/gallery", label: t.nav.gallery },
+    ],
+    [t.footer.company]: [
+      { href: "/about", label: t.nav.about },
+      { href: "/contact", label: t.nav.contact },
+      { href: "/contact", label: t.nav.bookEvent },
+    ],
+  };
+
   return (
     <footer className="bg-[var(--background)] mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -41,9 +46,8 @@ export default function Footer() {
               />
             </Link>
             <p className="text-muted text-sm leading-relaxed mb-6 max-w-sm">
-              {BRAND.description} From talent searches to youth empowerment conferences — we make every event unforgettable.
+              {t.footer.description}
             </p>
-            {/* Social links */}
             <div className="flex items-center gap-3">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <Link
@@ -93,7 +97,7 @@ export default function Footer() {
             </a>
           </div>
           <p className="text-muted text-xs">
-            © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
+            © {new Date().getFullYear()} {BRAND.name}. {t.footer.allRightsReserved}
           </p>
         </div>
       </div>

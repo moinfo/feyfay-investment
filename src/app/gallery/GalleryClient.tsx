@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { X, ZoomIn } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 type GalleryItem = {
   id: number;
@@ -82,14 +83,6 @@ const galleryItems: GalleryItem[] = [
 
 type Filter = "all" | "entertainment" | "empowerment" | "sports" | "awards";
 
-const tabs: { id: Filter; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "entertainment", label: "Entertainment" },
-  { id: "empowerment", label: "Empowerment" },
-  { id: "sports", label: "Sports" },
-  { id: "awards", label: "Awards" },
-];
-
 const heights: Record<string, string> = {
   wide: "250px",
   tall: "350px",
@@ -99,6 +92,15 @@ const heights: Record<string, string> = {
 export default function GalleryClient() {
   const [filter, setFilter] = useState<Filter>("all");
   const [selected, setSelected] = useState<GalleryItem | null>(null);
+  const { t } = useLanguage();
+
+  const tabs: { id: Filter; label: string }[] = [
+    { id: "all", label: t.gallery.tabs.all },
+    { id: "entertainment", label: t.gallery.tabs.entertainment },
+    { id: "empowerment", label: t.gallery.tabs.empowerment },
+    { id: "sports", label: t.gallery.tabs.sports },
+    { id: "awards", label: t.gallery.tabs.awards },
+  ];
 
   const filtered =
     filter === "all" ? galleryItems : galleryItems.filter((g) => g.category === filter);
@@ -108,13 +110,13 @@ export default function GalleryClient() {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <p className="text-sm font-semibold text-brand-light uppercase tracking-widest mb-3">
-          Our Moments
+          {t.gallery.ourMoments}
         </p>
         <h1 className="text-4xl sm:text-6xl font-black mb-4">
-          Event <span className="gradient-text">Gallery</span>
+          {t.gallery.title} <span className="gradient-text">{t.gallery.titleHighlight}</span>
         </h1>
         <p className="text-muted text-lg max-w-xl">
-          Highlights from our events — the moments, memories, and magic that define Feyfay.
+          {t.gallery.description}
         </p>
       </div>
 

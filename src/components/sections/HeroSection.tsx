@@ -5,13 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { BRAND } from "@/lib/brand";
-
-const stats = [
-  { value: 150, label: "Events Organized", suffix: "+" },
-  { value: 50000, label: "Happy Attendees", suffix: "+" },
-  { value: 200, label: "Clients Served", suffix: "+" },
-  { value: 5, label: "Years Experience", suffix: "+" },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 function CountUp({ target, suffix }: { target: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -47,6 +41,15 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 }
 
 export default function HeroSection() {
+  const { t } = useLanguage();
+
+  const stats = [
+    { value: 150, label: t.stats.eventsOrganized, suffix: "+" },
+    { value: 50000, label: t.stats.happyAttendees, suffix: "+" },
+    { value: 200, label: t.stats.clientsServed, suffix: "+" },
+    { value: 5, label: t.stats.yearsExperience, suffix: "+" },
+  ];
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
       {/* Background image */}
@@ -59,9 +62,7 @@ export default function HeroSection() {
           className="object-cover"
           sizes="100vw"
         />
-        {/* Dark overlay so text is readable */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
-        {/* Brand color tint */}
         <div className="absolute inset-0 bg-brand/10" />
       </div>
 
@@ -79,19 +80,18 @@ export default function HeroSection() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 border border-brand/30 text-brand-light text-sm font-medium mb-8">
           <Sparkles className="w-4 h-4" />
-          {BRAND.tagline}
+          {t.hero.badge}
         </div>
 
         {/* Headline */}
         <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black tracking-tight mb-6">
-          <span className="gradient-text">Events That</span>
+          <span className="gradient-text">{t.hero.title1}</span>
           <br />
-          <span className="text-white">Move You</span>
+          <span className="text-white">{t.hero.title2}</span>
         </h1>
 
         <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
-          From electrifying talent shows and sports bonanzas to life-changing
-          empowerment conferences — we create experiences that inspire, entertain, and unite.
+          {t.hero.description}
         </p>
 
         {/* CTA Buttons */}
@@ -100,13 +100,13 @@ export default function HeroSection() {
             href="/events"
             className="px-8 py-4 rounded-xl bg-brand-gradient text-white font-semibold text-base glow-brand hover:opacity-90 transition-all flex items-center gap-2"
           >
-            Explore Events <ArrowRight className="w-5 h-5" />
+            {t.hero.exploreEvents} <ArrowRight className="w-5 h-5" />
           </Link>
           <Link
             href="/contact"
             className="px-8 py-4 rounded-xl border-2 border-white/60 text-white font-semibold text-base hover:bg-white/10 hover:border-white transition-all"
           >
-            Plan Your Event
+            {t.hero.planEvent}
           </Link>
         </div>
 
@@ -125,7 +125,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted">
-        <span className="text-xs">Scroll</span>
+        <span className="text-xs">{t.hero.scroll}</span>
         <div className="w-5 h-9 rounded-full border-2 border-[var(--border)] flex items-start justify-center p-1">
           <div className="w-1.5 h-2.5 bg-brand-light rounded-full animate-bounce" />
         </div>

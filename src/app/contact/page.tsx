@@ -1,34 +1,33 @@
-import type { Metadata } from "next";
+"use client";
+
 import ContactForm from "./ContactForm";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { BRAND } from "@/lib/brand";
-
-export const metadata: Metadata = {
-  title: "Contact Us",
-  description: "Get in touch with Feyfay Events to book your next entertainment or empowerment event.",
-};
-
-const contactDetails = [
-  { icon: Mail, label: "Email", value: BRAND.email, href: `mailto:${BRAND.email}` },
-  { icon: Phone, label: "Phone", value: BRAND.phone, href: `tel:${BRAND.phone}` },
-  { icon: MapPin, label: "Location", value: "Dar es Salaam, Tanzania", href: "#" },
-  { icon: Clock, label: "Office Hours", value: "Mon–Fri, 8:00 AM – 6:00 PM", href: "#" },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactPage() {
+  const { t } = useLanguage();
+
+  const contactDetails = [
+    { icon: Mail, label: t.contact.details.email, value: BRAND.email, href: `mailto:${BRAND.email}` },
+    { icon: Phone, label: t.contact.details.phone, value: BRAND.phone, href: `tel:${BRAND.phone}` },
+    { icon: MapPin, label: t.contact.details.location, value: t.contact.details.locationValue, href: "#" },
+    { icon: Clock, label: t.contact.details.officeHours, value: t.contact.details.officeHoursValue, href: "#" },
+  ];
+
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-sm font-semibold text-brand-light uppercase tracking-widest mb-3">
-            Get In Touch
+            {t.contact.getInTouch}
           </p>
           <h1 className="text-4xl sm:text-6xl font-black mb-4">
-            Let&apos;s Plan Your <span className="gradient-text">Event</span>
+            {t.contact.title} <span className="gradient-text">{t.contact.titleHighlight}</span>
           </h1>
           <p className="text-muted text-lg max-w-xl mx-auto">
-            Whether you have an idea or a full brief — we&apos;re here to make it happen. Fill in the form and we&apos;ll respond within 24 hours.
+            {t.contact.description}
           </p>
         </div>
 
@@ -51,9 +50,9 @@ export default function ContactPage() {
               </a>
             ))}
 
-            {/* Event types we handle */}
+            {/* Event types */}
             <div className="card p-6 mt-4">
-              <h3 className="font-bold mb-4">Events We Organize</h3>
+              <h3 className="font-bold mb-4">{t.contact.eventsWeOrganize}</h3>
               <div className="space-y-2">
                 {[
                   { label: "Talent Shows & Searches", color: "text-entertainment" },

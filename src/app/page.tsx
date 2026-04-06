@@ -1,50 +1,54 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Mic2, Trophy, Dumbbell, Heart } from "lucide-react";
 import HeroSection from "@/components/sections/HeroSection";
 import EventCard from "@/components/ui/EventCard";
 import { getFeaturedEvents } from "@/lib/events";
-
-const categories = [
-  {
-    icon: Mic2,
-    title: "Talent & Shows",
-    description: "Talent searches, live concerts, and spectacular entertainment shows.",
-    href: "/entertainment",
-    gradient: "from-entertainment/20 to-entertainment/5",
-    border: "border-entertainment/30",
-    iconColor: "text-entertainment",
-  },
-  {
-    icon: Trophy,
-    title: "Awards",
-    description: "Prestigious award ceremonies celebrating excellence and achievement.",
-    href: "/entertainment",
-    gradient: "from-brand/20 to-brand/5",
-    border: "border-brand/30",
-    iconColor: "text-brand-light",
-  },
-  {
-    icon: Dumbbell,
-    title: "Sports Bonanza",
-    description: "Multi-sport tournaments and competitions across the region.",
-    href: "/events?category=sports",
-    gradient: "from-sports/20 to-sports/5",
-    border: "border-sports/30",
-    iconColor: "text-sports",
-  },
-  {
-    icon: Heart,
-    title: "Empowerment",
-    description: "Seminars and conferences for youth, women, and communities.",
-    href: "/empowerment",
-    gradient: "from-empowerment/20 to-empowerment/5",
-    border: "border-empowerment/30",
-    iconColor: "text-empowerment",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function HomePage() {
   const featuredEvents = getFeaturedEvents();
+  const { t } = useLanguage();
+
+  const categories = [
+    {
+      icon: Mic2,
+      title: t.home.categories.talentShows.title,
+      description: t.home.categories.talentShows.desc,
+      href: "/entertainment",
+      gradient: "from-entertainment/20 to-entertainment/5",
+      border: "border-entertainment/30",
+      iconColor: "text-entertainment",
+    },
+    {
+      icon: Trophy,
+      title: t.home.categories.awards.title,
+      description: t.home.categories.awards.desc,
+      href: "/entertainment",
+      gradient: "from-brand/20 to-brand/5",
+      border: "border-brand/30",
+      iconColor: "text-brand-light",
+    },
+    {
+      icon: Dumbbell,
+      title: t.home.categories.sports.title,
+      description: t.home.categories.sports.desc,
+      href: "/events?category=sports",
+      gradient: "from-sports/20 to-sports/5",
+      border: "border-sports/30",
+      iconColor: "text-sports",
+    },
+    {
+      icon: Heart,
+      title: t.home.categories.empowerment.title,
+      description: t.home.categories.empowerment.desc,
+      href: "/empowerment",
+      gradient: "from-empowerment/20 to-empowerment/5",
+      border: "border-empowerment/30",
+      iconColor: "text-empowerment",
+    },
+  ];
 
   return (
     <>
@@ -54,14 +58,14 @@ export default function HomePage() {
       <section className="section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <p className="text-sm font-semibold text-brand-light uppercase tracking-widest mb-3">
-            What We Do
+            {t.home.whatWeDo}
           </p>
           <h2 className="text-3xl sm:text-5xl font-black">
-            Every Type of{" "}
-            <span className="gradient-text-entertainment">Event</span>
+            {t.home.everyTypeTitle}{" "}
+            <span className="gradient-text-entertainment">{t.home.everyTypeHighlight}</span>
           </h2>
           <p className="text-muted mt-4 max-w-xl mx-auto">
-            We specialize in organizing events that entertain, empower, and bring communities together.
+            {t.home.everyTypeDesc}
           </p>
         </div>
 
@@ -72,15 +76,16 @@ export default function HomePage() {
               <Link
                 key={cat.title}
                 href={cat.href}
-                className={`card p-6 bg-gradient-to-br ${cat.gradient} border ${cat.border} group`}
+                className={`card p-6 border ${cat.border} group overflow-hidden relative`}
               >
-                <div className={`w-12 h-12 rounded-xl bg-[var(--background)] flex items-center justify-center mb-4 ${cat.iconColor}`}>
+                <div className={`absolute inset-0 bg-gradient-to-br ${cat.gradient} pointer-events-none`} />
+                <div className={`relative w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-4 ${cat.iconColor}`}>
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-base mb-2">{cat.title}</h3>
-                <p className="text-muted text-sm leading-relaxed mb-4">{cat.description}</p>
-                <span className={`flex items-center gap-1 text-sm font-medium ${cat.iconColor}`}>
-                  Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <h3 className="relative font-bold text-base mb-2">{cat.title}</h3>
+                <p className="relative text-muted text-sm leading-relaxed mb-4">{cat.description}</p>
+                <span className={`relative flex items-center gap-1 text-sm font-medium ${cat.iconColor}`}>
+                  {t.home.learnMore} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>
             );
@@ -93,17 +98,17 @@ export default function HomePage() {
         <div className="flex items-end justify-between mb-10">
           <div>
             <p className="text-sm font-semibold text-brand-light uppercase tracking-widest mb-3">
-              Coming Up
+              {t.home.comingUp}
             </p>
             <h2 className="text-3xl sm:text-5xl font-black">
-              Featured <span className="gradient-text">Events</span>
+              {t.home.featuredTitle} <span className="gradient-text">{t.home.featuredHighlight}</span>
             </h2>
           </div>
           <Link
             href="/events"
             className="hidden sm:flex items-center gap-2 text-sm text-muted hover:text-brand-light transition-colors"
           >
-            View all <ArrowRight className="w-4 h-4" />
+            {t.home.viewAll} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
@@ -118,7 +123,7 @@ export default function HomePage() {
             href="/events"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[var(--border)] text-sm font-medium hover:border-brand/50 transition-all"
           >
-            View all events <ArrowRight className="w-4 h-4" />
+            {t.home.viewAllEvents} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>
@@ -130,18 +135,16 @@ export default function HomePage() {
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
           <div className="relative">
             <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">
-              Ready to Create
-              <br />
-              Something Unforgettable?
+              {t.home.ctaTitle}
             </h2>
             <p className="text-white/80 text-lg max-w-xl mx-auto mb-8">
-              Let us handle your next event. From planning to execution — we make every moment count.
+              {t.home.ctaDesc}
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-brand font-bold text-base hover:bg-white/90 transition-all"
             >
-              Get in Touch <ArrowRight className="w-5 h-5" />
+              {t.home.getInTouch} <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>

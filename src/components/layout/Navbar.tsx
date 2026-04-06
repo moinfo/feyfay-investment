@@ -7,21 +7,23 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { BRAND } from "@/lib/brand";
 import ThemeToggle from "@/components/ui/ThemeToggle";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/events", label: "Events" },
-  { href: "/entertainment", label: "Entertainment" },
-  { href: "/empowerment", label: "Empowerment" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { language, setLanguage, t } = useLanguage();
+
+  const navLinks = [
+    { href: "/", label: t.nav.home },
+    { href: "/events", label: t.nav.events },
+    { href: "/entertainment", label: t.nav.entertainment },
+    { href: "/empowerment", label: t.nav.empowerment },
+    { href: "/gallery", label: t.nav.gallery },
+    { href: "/about", label: t.nav.about },
+    { href: "/contact", label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -80,17 +82,36 @@ export default function Navbar() {
 
             {/* Right side */}
             <div className="hidden lg:flex items-center gap-3">
+              {/* Language toggle */}
+              <button
+                onClick={() => setLanguage(language === "en" ? "sw" : "en")}
+                className="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-white/20 text-white/70 hover:text-white hover:border-white/40 text-xs font-semibold tracking-wider transition-all"
+                aria-label="Toggle language"
+              >
+                <span className={language === "en" ? "text-white" : "text-white/40"}>EN</span>
+                <span className="text-white/30">|</span>
+                <span className={language === "sw" ? "text-white" : "text-white/40"}>SW</span>
+              </button>
               <ThemeToggle />
               <Link
                 href="/contact"
                 className="px-5 py-2.5 rounded-xl bg-brand-gradient text-white text-sm font-semibold glow-brand hover:opacity-90 transition-opacity"
               >
-                Book Event
+                {t.nav.bookEvent}
               </Link>
             </div>
 
             {/* Mobile controls */}
             <div className="lg:hidden flex items-center gap-2">
+              {/* Language toggle mobile */}
+              <button
+                onClick={() => setLanguage(language === "en" ? "sw" : "en")}
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-white/20 text-white/70 hover:text-white text-xs font-semibold tracking-wider transition-all"
+              >
+                <span className={language === "en" ? "text-white" : "text-white/40"}>EN</span>
+                <span className="text-white/30">|</span>
+                <span className={language === "sw" ? "text-white" : "text-white/40"}>SW</span>
+              </button>
               <ThemeToggle />
               <button
                 className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all"
@@ -129,7 +150,7 @@ export default function Navbar() {
               href="/contact"
               className="mt-2 px-5 py-3 rounded-xl bg-brand-gradient text-white text-sm font-semibold text-center"
             >
-              Book Event
+              {t.nav.bookEvent}
             </Link>
           </div>
         </div>

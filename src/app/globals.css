@@ -1,8 +1,38 @@
 @import "tailwindcss";
 
+/* ─── Brand Color Tokens ─────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary brand — deep electric purple */
+  --brand-primary: #7C3AED;
+  --brand-primary-dark: #5B21B6;
+  --brand-primary-light: #A78BFA;
+
+  /* Entertainment accent — vivid gold/amber */
+  --brand-entertainment: #F59E0B;
+  --brand-entertainment-dark: #B45309;
+  --brand-entertainment-light: #FCD34D;
+
+  /* Empowerment accent — warm teal */
+  --brand-empowerment: #0D9488;
+  --brand-empowerment-dark: #0F766E;
+  --brand-empowerment-light: #2DD4BF;
+
+  /* Sports accent — energetic orange-red */
+  --brand-sports: #EF4444;
+  --brand-sports-dark: #B91C1C;
+  --brand-sports-light: #FCA5A5;
+
+  /* Neutral base */
+  --background: #0A0A0F;
+  --background-card: #13131A;
+  --background-elevated: #1C1C27;
+  --foreground: #F8F8FF;
+  --foreground-muted: #A1A1B5;
+  --border: #2A2A3D;
+
+  /* Font sizes */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @theme inline {
@@ -10,17 +40,127 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Expose brand tokens to Tailwind utilities */
+  --color-brand: var(--brand-primary);
+  --color-brand-dark: var(--brand-primary-dark);
+  --color-brand-light: var(--brand-primary-light);
+  --color-entertainment: var(--brand-entertainment);
+  --color-empowerment: var(--brand-empowerment);
+  --color-sports: var(--brand-sports);
+  --color-card: var(--background-card);
+  --color-elevated: var(--background-elevated);
+  --color-border: var(--border);
+  --color-muted: var(--foreground-muted);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Light Mode Overrides ───────────────────────── */
+[data-theme="light"] {
+  --background: #F5F5FA;
+  --background-card: #FFFFFF;
+  --background-elevated: #EEEEF5;
+  --foreground: #0A0A0F;
+  --foreground-muted: #6B6B80;
+  --border: #D8D8E8;
+}
+
+
+/* ─── Base Styles ────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Typography ─────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Utility Classes ────────────────────────────── */
+
+/* Gradient text — brand */
+.gradient-text {
+  background: linear-gradient(135deg, var(--brand-primary-light), var(--brand-entertainment));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient text — entertainment */
+.gradient-text-entertainment {
+  background: linear-gradient(135deg, #F59E0B, #EF4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient text — empowerment */
+.gradient-text-empowerment {
+  background: linear-gradient(135deg, #0D9488, #7C3AED);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Brand gradient background */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, var(--brand-primary-dark), var(--brand-primary), #9333EA);
+}
+
+/* Glow effects */
+.glow-brand {
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.4);
+}
+
+.glow-entertainment {
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+}
+
+.glow-empowerment {
+  box-shadow: 0 0 30px rgba(13, 148, 136, 0.4);
+}
+
+/* Card base */
+.card {
+  background: var(--background-card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-primary);
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
+}
+
+/* Section spacing */
+.section {
+  padding: 5rem 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brand-primary);
+  border-radius: 3px;
 }

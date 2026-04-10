@@ -6,6 +6,8 @@ import { Mic2, Trophy, Star, Music, ArrowRight } from "lucide-react";
 import EventCard from "@/components/ui/EventCard";
 import { getEventsByCategory } from "@/lib/events";
 import { useLanguage } from "@/context/LanguageContext";
+import RockCityFestivalSection from "@/components/sections/RockCityFestivalSection";
+import SifaZivumeFestivalSection from "@/components/sections/SifaZivumeFestivalSection";
 
 const highlights = [
   {
@@ -93,6 +95,22 @@ export default function EntertainmentPage() {
             {t.entertainment.bookBtn} <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
+      </div>
+
+      {/* Rock City Festival */}
+      <RockCityFestivalSection />
+
+      {/* Divider */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="border-t border-white/5" />
+      </div>
+
+      {/* Sifa Zivume Festival */}
+      <SifaZivumeFestivalSection />
+
+      {/* Divider */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="border-t border-white/5" />
       </div>
 
       {/* Highlights */}

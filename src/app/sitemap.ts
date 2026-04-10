@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 import { events } from "@/lib/events";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.feyfayinvestment.co.tz";
 

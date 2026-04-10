@@ -190,6 +190,47 @@ const en = {
       locationValue: "Dar es Salaam, Tanzania",
     },
   },
+  sifaZivume: {
+    badge: "Feyfay Experience",
+    title: "Sifa Zivume Festival",
+    tagline: "Let Praises Resound, May the Name of the Lord Be Glorified!",
+    description:
+      "Sifa Zivume Festival is a Gospel music festival that brings together choirs, bands, praise teams, and individual singers on one platform for praise, worship, and glorifying God.",
+    paragraph2:
+      "An event aimed at uniting believers and the community through the power of Gospel music, thanking God for the health, blessings, and wellness He grants us every day.",
+    heritage:
+      "This festival continues and builds upon years of experience from the Lakwetu Concert, carrying that legacy forward with greater quality, wider reach, and deeper impact for the Gospel music community.",
+    organizedBy: "Organized by Feyfay Investment through its",
+    brand: "Feyfay Experience",
+    location: "Headquartered in Mwanza City",
+    pillarsTitle: "What Sifa Zivume Brings",
+    pillars: [
+      { name: "Choirs & Bands", desc: "A united stage for choirs, bands, praise teams, and solo artists to glorify God together." },
+      { name: "Talent Elevation", desc: "Discovering and uplifting Gospel music talent from across the region." },
+      { name: "True Worship", desc: "Inspiring genuine worship experiences that move the heart and strengthen faith." },
+      { name: "Community & Faith", desc: "A unique platform for believers to meet, learn, and collaborate in faith." },
+    ],
+  },
+  rockCityFestival: {
+    badge: "Feyfay Experience",
+    title: "Rock City Festival",
+    tagline: "Where Talents Find Strength and Opportunities",
+    description:
+      "Rock City Festival is a special season of events aimed at promoting, showcasing, and developing talents in various fields. A platform that brings together entertainment, creativity, business, and opportunities for youth and stakeholders in the arts and talent industry.",
+    organizedBy: "Organized by Feyfay Investment through its",
+    brand: "Feyfay Experience",
+    brandSuffix: "brand",
+    eventsTitle: "Events of the Season",
+    seasonNote: "All these events form the complete Rock City Festival season, held once a year at the highest quality.",
+    events: [
+      { name: "Rock City Cup", desc: "A thrilling football competition bringing together the region's top clubs and emerging talent." },
+      { name: "Rock City Talent Search", desc: "A nationwide hunt for the most gifted performers across music, dance, comedy, and spoken word." },
+      { name: "Rock City Concert", desc: "A spectacular live music experience featuring top artists from Tanzania and across Africa." },
+      { name: "Rock City Awards", desc: "A prestigious ceremony celebrating excellence in entertainment, arts, and creativity." },
+      { name: "Rock City Tour", desc: "A multi-city tour bringing the festival experience to communities across the nation." },
+      { name: "Rock City Business Summit", desc: "A premier business forum connecting creatives, investors, and industry leaders." },
+    ],
+  },
   footer: {
     description:
       "We organize world-class events that inspire, entertain, and empower communities. From talent searches to youth empowerment conferences — we make every event unforgettable.",

@@ -192,6 +192,47 @@ const sw: Translations = {
       locationValue: "Dar es Salaam, Tanzania",
     },
   },
+  sifaZivume: {
+    badge: "Feyfay Experience",
+    title: "Sifa Zivume Festival",
+    tagline: "Sifa Zivume, Jina la Bwana Litukuzwe!",
+    description:
+      "Sifa Zivume Festival ni tamasha la muziki wa Injili linalokusanya pamoja kwaya, bendi, praise teams na waimbaji binafsi katika jukwaa moja kwa ajili ya kusifu, kuabudu na kumtukuza Mungu.",
+    paragraph2:
+      "Ni tukio lenye lengo la kuunganisha waumini na jamii kwa ujumla kupitia nguvu ya muziki wa Injili, huku tukimshukuru Mungu kwa afya, baraka na uzima anaotujalia kila siku.",
+    heritage:
+      "Tamasha hili linakuja kama mwendelezo na maboresho ya matukio ya awali, likichukua nafasi ya Lakwetu Concert iliyodumu kwa miaka kadhaa — na kuleta ubora zaidi, mvuto mkubwa na athari chanya kwa wadau wote wa muziki wa Injili na jamii kwa ujumla.",
+    organizedBy: "Inaandaliwa na Feyfay Investment kupitia chapa yake ya",
+    brand: "Feyfay Experience",
+    location: "Makao yake Jijini Mwanza",
+    pillarsTitle: "Sifa Zivume Inaleta Nini",
+    pillars: [
+      { name: "Kwaya & Bendi", desc: "Jukwaa moja kwa kwaya, bendi, praise teams na waimbaji binafsi kumtukuza Mungu pamoja." },
+      { name: "Kuinua Vipaji", desc: "Kugundua na kuinua vipaji vya muziki wa Injili kutoka mkoa mzima." },
+      { name: "Ibada ya Kweli", desc: "Kuleta uzoefu wa ibada ya kweli unaogusa moyo na kuimarisha imani." },
+      { name: "Jamii & Imani", desc: "Jukwaa la kipekee la kukutana, kujifunza na kushirikiana katika imani." },
+    ],
+  },
+  rockCityFestival: {
+    badge: "Feyfay Experience",
+    title: "Rock City Festival",
+    tagline: "Mahali Vipaji Vinapopata Nguvu na Fursa",
+    description:
+      "Rock City Festival ni msimu maalum wa matukio unaolenga kukuza, kuonesha na kuendeleza vipaji katika nyanja mbalimbali. Ni jukwaa linalokutanisha burudani, ubunifu, biashara na fursa kwa vijana na wadau wa tasnia ya sanaa na vipaji.",
+    organizedBy: "Tamasha hili linaandaliwa na Feyfay Investment kupitia brand yake ya",
+    brand: "Feyfay Experience",
+    brandSuffix: "",
+    eventsTitle: "Matukio ya Msimu",
+    seasonNote: "Matukio haya yote kwa pamoja yanaunda msimu kamili wa Rock City Festival, unaofanyika mara moja kila mwaka kwa ubora wa hali ya juu.",
+    events: [
+      { name: "Rock City Cup", desc: "Mashindano ya soka yanayokusanya klabu bora za mkoa na vipaji vinavyojitokeza." },
+      { name: "Rock City Talent Search", desc: "Utafutaji wa kitaifa wa waigizaji wenye kipaji zaidi katika muziki, ngoma, komediani na maneno." },
+      { name: "Rock City Concert", desc: "Uzoefu wa ajabu wa muziki wa moja kwa moja unaojumuisha wasanii wakuu kutoka Tanzania na Afrika." },
+      { name: "Rock City Awards", desc: "Sherehe ya hadhi inayosherehekea ubora katika burudani, sanaa na ubunifu." },
+      { name: "Rock City Tour", desc: "Safari ya miji mingi inayoleta uzoefu wa tamasha kwa jamii kote nchini." },
+      { name: "Rock City Business Summit", desc: "Mkutano wa biashara wa hali ya juu unaounganisha wasanii, wawekezaji na viongozi wa tasnia." },
+    ],
+  },
   footer: {
     description:
       "Tunapanga matukio ya daraja la dunia yanayovutia, kuburudisha, na kuwezesha jamii. Kuanzia utafutaji wa vipaji hadi mikutano ya uwezeshaji wa vijana — tunafanya kila tukio lisisahaulike.",
